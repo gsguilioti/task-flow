@@ -10,6 +10,7 @@ namespace TaskFlow.Data
         {
         }
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Collaborator> Collaborators { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<TaskFlow.Model.Task> Tasks { get; set; }

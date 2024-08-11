@@ -10,7 +10,6 @@ namespace TaskFlow.Model
         public DateTime? UpdatedAt { get; set; }    
         public DateTime? DeletedAt { get; set; }  
 
-        public int UserId { get; set; }
         public User User {get; set; }
     }
 }
