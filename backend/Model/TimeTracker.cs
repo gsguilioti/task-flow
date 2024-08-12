@@ -1,3 +1,5 @@
+using TaskFlow.Dto;
+
 namespace TaskFlow.Model
 {
     public class TimeTracker
@@ -17,5 +19,30 @@ namespace TaskFlow.Model
 
         public int CollaboratorId { get; set; }
         public Collaborator Collaborator {get; set; }
+
+        public TimeTracker() { }
+        public TimeTracker(TimeTrackerDto dto)
+        {
+            StartDate = dto.StartDate;
+            EndDate = dto.EndDate;
+            TimeZoneId = dto.TimeZoneId;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            DeletedAt = dto.DeletedAt;
+            TaskId = dto.TaskId;
+            CollaboratorId = dto.CollaboratorId;
+        }
+
+        public void MapDto(TimeTrackerDto dto)
+        {
+            StartDate = dto.StartDate;
+            EndDate = dto.EndDate;
+            TimeZoneId = dto.TimeZoneId;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            DeletedAt = dto.DeletedAt;
+            TaskId = dto.TaskId;
+            CollaboratorId = dto.CollaboratorId;
+        }
     }
 }

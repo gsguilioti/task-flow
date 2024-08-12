@@ -1,3 +1,5 @@
+using TaskFlow.Dto;
+
 namespace TaskFlow.Model
 {
     public class Project
@@ -9,5 +11,22 @@ namespace TaskFlow.Model
         public DateTime? DeletedAt { get; set; }  
 
         ICollection<Task> Tasks {get; set; }
+
+        public Project() { }
+        public Project(ProjectDto dto)
+        {
+            Name = dto.Name;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            DeletedAt = dto.DeletedAt;
+        }
+
+        public void MapDto(ProjectDto dto)
+        {
+            Name = dto.Name;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            DeletedAt = dto.DeletedAt;
+        }
     }
 }

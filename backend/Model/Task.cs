@@ -1,3 +1,5 @@
+using TaskFlow.Dto;
+
 namespace TaskFlow.Model
 {
     public class Task
@@ -13,5 +15,26 @@ namespace TaskFlow.Model
         public Project Project {get; set; }
 
         ICollection<TimeTracker> TimeTrackers {get; set; }
+
+        public Task() { }
+        public Task(TaskDto dto)
+        {
+            Name = dto.Name;
+            Description = dto.Description;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            DeletedAt = dto.DeletedAt;
+            ProjectId = dto.ProjectId;
+        }
+
+        public void MapDto(TaskDto dto)
+        {
+            Name = dto.Name;
+            Description = dto.Description;
+            CreatedAt = dto.CreatedAt;
+            UpdatedAt = dto.UpdatedAt;
+            DeletedAt = dto.DeletedAt;
+            ProjectId = dto.ProjectId;
+        }
     }
 }
