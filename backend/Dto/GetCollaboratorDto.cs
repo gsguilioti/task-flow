@@ -15,7 +15,7 @@ namespace TaskFlow.Dto
         {
             Id = collaborator.Id;
             Name = collaborator.Name;
-            User = collaborator.User.UserName;
+            User = collaborator.User?.UserName;
             CreatedAt = collaborator.CreatedAt;
             UpdatedAt = collaborator.UpdatedAt;
         }

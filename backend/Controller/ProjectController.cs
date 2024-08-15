@@ -11,6 +11,7 @@ namespace backend.Controller
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ProjectController : ControllerBase
     {
         private readonly IProjectRepository _repository;
@@ -42,7 +43,6 @@ namespace backend.Controller
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public IActionResult Create(ProjectDto dto)
         {
             var project = new Project(dto);

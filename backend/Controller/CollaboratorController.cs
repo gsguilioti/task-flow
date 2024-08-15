@@ -13,6 +13,7 @@ namespace backend.Controller
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class CollaboratorController : ControllerBase
     {
         private readonly ICollaboratorRepository _repository;
@@ -36,6 +37,7 @@ namespace backend.Controller
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAll()
         {
             var collaborators = _repository.GetAll();
@@ -46,7 +48,6 @@ namespace backend.Controller
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public IActionResult Create(CollaboratorDto dto)
         {
             var collaborator = _collaboratorService.CreateCollaborator(dto);

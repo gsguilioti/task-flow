@@ -12,6 +12,7 @@ namespace backend.Controller
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class TimeTrackerController : ControllerBase
     {
         private readonly ITimeTrackerRepository _repository;
@@ -55,7 +56,6 @@ namespace backend.Controller
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public IActionResult Create(TimeTrackerDto dto)
         {
             var timeTracker = _timeTrackerService.CreateTimeTracker(dto);

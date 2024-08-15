@@ -10,6 +10,7 @@ namespace backend.Controller
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class TaskController : ControllerBase
     {
         private readonly ITaskRepository _repository;
@@ -51,7 +52,6 @@ namespace backend.Controller
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public IActionResult Create(TaskDto dto)
         {
             var task = new TaskFlow.Model.Task(dto);
