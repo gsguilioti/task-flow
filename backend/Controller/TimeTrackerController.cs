@@ -30,7 +30,7 @@ namespace backend.Controller
             if (timeTracker == null)
                 return NotFound(new { Message = "Not Found" });
 
-            var timeTrackerDto = new TimeTrackerDto(timeTracker);
+            var timeTrackerDto = new GetTimeTrackerDto(timeTracker);
             return Ok(timeTrackerDto);
         }
 
@@ -41,7 +41,7 @@ namespace backend.Controller
             if (timeTrackers.ToList().Count == 0)
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
-            return Ok(timeTrackers);
+            return Ok(timeTrackers.Select(t => new GetTimeTrackerDto(t)));
         }
 
         [HttpGet("/timetracker/task/{id}")]
@@ -51,7 +51,7 @@ namespace backend.Controller
             if (timeTrackers.ToList().Count == 0)
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
-            return Ok(timeTrackers);
+            return Ok(timeTrackers.Select(t => new GetTimeTrackerDto(t)));
         }
 
         [HttpPost]

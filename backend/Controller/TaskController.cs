@@ -26,7 +26,7 @@ namespace backend.Controller
             if (task == null)
                 return NotFound(new { Message = "Not Found" });
 
-            var taskDto = new TaskDto(task);
+            var taskDto = new GetTaskDto(task);
             return Ok(taskDto);
         }
 
@@ -37,7 +37,7 @@ namespace backend.Controller
             if (tasks.ToList().Count == 0)
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
-            return Ok(tasks);
+            return Ok(tasks.Select(t => new GetTaskDto(t)));
         }
 
         [HttpGet("/task/project/{id}")]
@@ -47,7 +47,7 @@ namespace backend.Controller
             if (tasks.ToList().Count == 0)
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
-            return Ok(tasks);
+            return Ok(tasks.Select(t => new GetTaskDto(t)));
         }
 
         [HttpPost]

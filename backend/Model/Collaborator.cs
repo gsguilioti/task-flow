@@ -19,7 +19,7 @@ namespace TaskFlow.Model
             User = user;
         }
 
-        public void MapDto(CollaboratorDto dto)
+        public void MapDto(UpdateCollaboratorDto dto)
         {
             Name = dto.Name;
         }

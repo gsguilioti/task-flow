@@ -5,6 +5,7 @@ using backend.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
+using System.Threading.Tasks;
 using TaskFlow.Dto;
 using TaskFlow.Model;
 
@@ -30,7 +31,7 @@ namespace backend.Controller
             if (collaborator == null)
                 return NotFound(new { Message = "Not Found" });
 
-            var collaboratorDto = new CollaboratorDto(collaborator);
+            var collaboratorDto = new GetCollaboratorDto(collaborator);
             return Ok(collaboratorDto);
         }
 
@@ -41,7 +42,7 @@ namespace backend.Controller
             if (collaborators.ToList().Count == 0)
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
-            return Ok(collaborators);
+            return Ok(collaborators.Select(c => new GetCollaboratorDto(c)));
         }
 
         [HttpPost]
@@ -55,7 +56,7 @@ namespace backend.Controller
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, CollaboratorDto dto)
+        public IActionResult Update(int id, UpdateCollaboratorDto dto)
         {
             var collaborator = _repository.GetById(id);
 

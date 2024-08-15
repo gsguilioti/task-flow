@@ -11,10 +11,7 @@ namespace TaskFlow.Model
         public User() { }
         public User(UserDto dto)
         {
-        }
-
-        public void MapDto(UserDto dto)
-        {
+            UserName = dto.UserName;
         }
     }
 }

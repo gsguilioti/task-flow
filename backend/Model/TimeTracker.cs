@@ -24,7 +24,6 @@ namespace TaskFlow.Model
         {
             StartDate = dto.StartDate;
             EndDate = dto.EndDate;
-            TimeZoneId = dto.TimeZoneId;
             TaskId = dto.TaskId;
             CollaboratorId = dto.CollaboratorId;
         }
@@ -33,7 +32,6 @@ namespace TaskFlow.Model
         {
             StartDate = dto.StartDate;
             EndDate = dto.EndDate;
-            TimeZoneId = dto.TimeZoneId;
             TaskId = dto.TaskId;
             CollaboratorId = dto.CollaboratorId;
         }

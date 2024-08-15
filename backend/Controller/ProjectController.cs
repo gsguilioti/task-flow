@@ -3,6 +3,7 @@ using backend.Repository.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
+using System.Threading.Tasks;
 using TaskFlow.Dto;
 using TaskFlow.Model;
 
@@ -26,7 +27,7 @@ namespace backend.Controller
             if (project == null)
                 return NotFound(new { Message = "Not Found" });
 
-            var projectDto = new ProjectDto(project);
+            var projectDto = new GetProjectDto(project);
             return Ok(projectDto);
         }
 
@@ -37,7 +38,7 @@ namespace backend.Controller
             if (projects.ToList().Count == 0)
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
-            return Ok(projects);
+            return Ok(projects.Select(p => new GetProjectDto(p)));
         }
 
         [HttpPost]

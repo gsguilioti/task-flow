@@ -1,8 +1,9 @@
+using System.ComponentModel.DataAnnotations;
 using TaskFlow.Model;
 
 namespace TaskFlow.Dto
 {
-    public class ProjectDto
+    public class UpdateCollaboratorDto
     {
         public string Name { get; set; }
     }

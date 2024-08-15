@@ -37,7 +37,7 @@ namespace backend.Controller
             if (users.ToList().Count == 0)
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
-            return Ok(users);
+            return Ok(users.Select(u => new UserDto(u)));
         }
 
         [HttpDelete("{username}")]
