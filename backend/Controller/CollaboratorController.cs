@@ -1,4 +1,5 @@
 ﻿using backend.Repository;
+using backend.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -12,9 +13,11 @@ namespace backend.Controller
     public class CollaboratorController : ControllerBase
     {
         private readonly CollaboratorRepository _repository;
-        public CollaboratorController(CollaboratorRepository repository)
+        private readonly CollaboratorService _collaboratorService;
+        public CollaboratorController(CollaboratorRepository repository, CollaboratorService collaboratorService)
         {
             _repository = repository;
+            _collaboratorService = collaboratorService;
         }
 
         [HttpGet("{id}")]
@@ -43,7 +46,8 @@ namespace backend.Controller
         [AllowAnonymous]
         public IActionResult Create(CollaboratorDto dto)
         {
-            var collaborator = new Collaborator(dto);
+            var collaborator = _collaboratorService.CreateCollaborator(dto);
+
             _repository.Create(collaborator);
             return Created("/collaborators", collaborator);
         }

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TaskFlow.Dto
 {
     public class TaskDto
@@ -6,8 +8,9 @@ namespace TaskFlow.Dto
         public string Description {get; set; }
         public DateTime? CreatedAt { get; set; }    
         public DateTime? UpdatedAt { get; set; }    
-        public DateTime? DeletedAt { get; set; }  
+        public DateTime? DeletedAt { get; set; }
 
+        [Required]
         public int ProjectId { get; set; }
 
         public TaskDto() { }

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using TaskFlow.Model;
 
 namespace TaskFlow.Dto
@@ -8,16 +9,15 @@ namespace TaskFlow.Dto
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
-        public string UserId {  get; set; }
+
+        [Required]
+        public string UserName {  get; set; }
 
         public CollaboratorDto() { }
         public CollaboratorDto(Collaborator collaborator)
         {
             Name = collaborator.Name;
-            CreatedAt = collaborator.CreatedAt;
-            UpdatedAt = collaborator.UpdatedAt;
-            DeletedAt = collaborator.DeletedAt;
-            UserId = collaborator.User.Id;
+            UserName = collaborator.User.UserName;
         }
     }
 }

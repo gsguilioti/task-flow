@@ -1,4 +1,5 @@
 ﻿using backend.Repository;
+using backend.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -12,9 +13,11 @@ namespace backend.Controller
     public class TimeTrackerController : ControllerBase
     {
         private readonly TimeTrackerRepository _repository;
-        public TimeTrackerController(TimeTrackerRepository repository)
+        private readonly TimeTrackerService _timeTrackerService;
+        public TimeTrackerController(TimeTrackerRepository repository, TimeTrackerService timeTrackerService)
         {
             _repository = repository;
+            _timeTrackerService = timeTrackerService;
         }
 
         [HttpGet("{id}")]
@@ -39,11 +42,21 @@ namespace backend.Controller
             return Ok(timeTrackers);
         }
 
+        [HttpGet("/timetracker/task/{id}")]
+        public IActionResult GetAllByTask(int id)
+        {
+            var timeTrackers = _repository.GetAllByTask(id);
+            if (timeTrackers.ToList().Count == 0)
+                return Ok(new { Message = "Nenhum registro encontrado" });
+
+            return Ok(timeTrackers);
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Create(TimeTrackerDto dto)
         {
-            var timeTracker = new TimeTracker(dto);
+            var timeTracker = _timeTrackerService.CreateTimeTracker(dto);
             _repository.Create(timeTracker);
             return Created("/timeTrackers", timeTracker);
         }

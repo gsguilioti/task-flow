@@ -1,3 +1,5 @@
+using backend.Repository;
+using backend.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +26,18 @@ builder.Services.AddIdentityApiEndpoints<User>()
     .AddEntityFrameworkStores<DataContext>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
-    options.User.RequireUniqueEmail = true;
-    options.SignIn.RequireConfirmedEmail = false; 
+    options.User.AllowedUserNameCharacters = null;
+    options.User.RequireUniqueEmail = false;
 });
+
+builder.Services.AddScoped<CollaboratorRepository>();
+builder.Services.AddScoped<TaskRepository>();
+builder.Services.AddScoped<TimeTrackerRepository>();
+builder.Services.AddScoped<ProjectRepository>();
+builder.Services.AddScoped<UserRepository>();
+
+builder.Services.AddScoped<TimeTrackerService>();
+builder.Services.AddScoped<CollaboratorService>();
 
 var app = builder.Build();
 

@@ -39,6 +39,16 @@ namespace backend.Controller
             return Ok(tasks);
         }
 
+        [HttpGet("/task/project/{id}")]
+        public IActionResult GetAllByProject(int id)
+        {
+            var tasks = _repository.GetAllByProject(id);
+            if (tasks.ToList().Count == 0)
+                return Ok(new { Message = "Nenhum registro encontrado" });
+
+            return Ok(tasks);
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Create(TaskDto dto)

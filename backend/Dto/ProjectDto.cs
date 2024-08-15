@@ -13,9 +13,6 @@ namespace TaskFlow.Dto
         public ProjectDto(Project project)
         {
             Name = project.Name;
-            CreatedAt = project.CreatedAt;
-            UpdatedAt = project.UpdatedAt;
-            DeletedAt = project.DeletedAt;
         }
     }
 }

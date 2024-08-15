@@ -21,9 +21,6 @@ namespace TaskFlow.Model
         {
             Name = dto.Name;
             Description = dto.Description;
-            CreatedAt = dto.CreatedAt;
-            UpdatedAt = dto.UpdatedAt;
-            DeletedAt = dto.DeletedAt;
             ProjectId = dto.ProjectId;
         }
 
@@ -31,9 +28,6 @@ namespace TaskFlow.Model
         {
             Name = dto.Name;
             Description = dto.Description;
-            CreatedAt = dto.CreatedAt;
-            UpdatedAt = dto.UpdatedAt;
-            DeletedAt = dto.DeletedAt;
             ProjectId = dto.ProjectId;
         }
     }

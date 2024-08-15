@@ -17,12 +17,14 @@ namespace backend.Repository
 
         public void Create(Project project)
         {
+            project.CreatedAt = DateTime.Now;
             _context.Projects.Add(project);
             _context.SaveChanges();
         }
 
         public void Update(Project project)
         {
+            project.UpdatedAt = DateTime.Now;
             _context.Projects.Update(project);
             _context.SaveChanges();
         }

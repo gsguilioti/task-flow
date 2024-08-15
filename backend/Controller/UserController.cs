@@ -39,15 +39,6 @@ namespace backend.Controller
             return Ok(users);
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        public IActionResult Create(UserDto dto)
-        {
-            var user = new User(dto);
-            _repository.Create(user);
-            return Created("/users", user);
-        }
-
         [HttpPut("{id}")]
         public IActionResult Update(string id, UserDto dto)
         {
@@ -61,10 +52,10 @@ namespace backend.Controller
             return Ok(user);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
+        [HttpDelete("{username}")]
+        public IActionResult Delete(string username)
         {
-            var user = _repository.GetById(id);
+            var user = _repository.GetByUsername(username);
 
             if (user == null)
                 return NotFound(new { Message = "Not Found" });

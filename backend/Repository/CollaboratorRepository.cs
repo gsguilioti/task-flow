@@ -17,12 +17,14 @@ namespace backend.Repository
 
         public void Create(Collaborator collaborator)
         {
+            collaborator.CreatedAt = DateTime.Now;
             _context.Collaborators.Add(collaborator);
             _context.SaveChanges();
         }
 
         public void Update(Collaborator collaborator)
         {
+            collaborator.UpdatedAt = DateTime.Now;
             _context.Collaborators.Update(collaborator);
             _context.SaveChanges();
         }

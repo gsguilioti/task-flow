@@ -8,7 +8,6 @@ namespace TaskFlow.Model
         public string Name {get; set; }
         public DateTime? CreatedAt { get; set; }    
         public DateTime? UpdatedAt { get; set; }    
-        public DateTime? DeletedAt { get; set; }  
 
         ICollection<Task> Tasks {get; set; }
 
@@ -16,17 +15,11 @@ namespace TaskFlow.Model
         public Project(ProjectDto dto)
         {
             Name = dto.Name;
-            CreatedAt = dto.CreatedAt;
-            UpdatedAt = dto.UpdatedAt;
-            DeletedAt = dto.DeletedAt;
         }
 
         public void MapDto(ProjectDto dto)
         {
             Name = dto.Name;
-            CreatedAt = dto.CreatedAt;
-            UpdatedAt = dto.UpdatedAt;
-            DeletedAt = dto.DeletedAt;
         }
     }
 }

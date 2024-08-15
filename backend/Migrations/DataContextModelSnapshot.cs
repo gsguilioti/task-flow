@@ -183,7 +183,7 @@ namespace backend.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Collaborators");
+                    b.ToTable("Collaborators", (string)null);
                 });
 
             modelBuilder.Entity("TaskFlow.Model.Project", b =>
@@ -209,7 +209,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("TaskFlow.Model.Task", b =>
@@ -244,7 +244,7 @@ namespace backend.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Tasks", (string)null);
                 });
 
             modelBuilder.Entity("TaskFlow.Model.TimeTracker", b =>
@@ -286,7 +286,7 @@ namespace backend.Migrations
 
                     b.HasIndex("TaskId");
 
-                    b.ToTable("TimeTrackers");
+                    b.ToTable("TimeTrackers", (string)null);
                 });
 
             modelBuilder.Entity("TaskFlow.Model.User", b =>

@@ -12,7 +12,6 @@ namespace TaskFlow.Model
 
         public DateTime? CreatedAt { get; set; }    
         public DateTime? UpdatedAt { get; set; }    
-        public DateTime? DeletedAt { get; set; }  
 
         public int TaskId { get; set; }
         public Task Task {get; set; }
@@ -26,9 +25,6 @@ namespace TaskFlow.Model
             StartDate = dto.StartDate;
             EndDate = dto.EndDate;
             TimeZoneId = dto.TimeZoneId;
-            CreatedAt = dto.CreatedAt;
-            UpdatedAt = dto.UpdatedAt;
-            DeletedAt = dto.DeletedAt;
             TaskId = dto.TaskId;
             CollaboratorId = dto.CollaboratorId;
         }
@@ -38,9 +34,6 @@ namespace TaskFlow.Model
             StartDate = dto.StartDate;
             EndDate = dto.EndDate;
             TimeZoneId = dto.TimeZoneId;
-            CreatedAt = dto.CreatedAt;
-            UpdatedAt = dto.UpdatedAt;
-            DeletedAt = dto.DeletedAt;
             TaskId = dto.TaskId;
             CollaboratorId = dto.CollaboratorId;
         }

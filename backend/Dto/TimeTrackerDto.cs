@@ -9,9 +9,6 @@ namespace TaskFlow.Dto
 
         public string TimeZoneId { get; set; }
 
-        public DateTime? CreatedAt { get; set; }    
-        public DateTime? UpdatedAt { get; set; }    
-        public DateTime? DeletedAt { get; set; }  
 
         public int TaskId { get; set; }
 
@@ -22,9 +19,6 @@ namespace TaskFlow.Dto
             StartDate = timeTracker.StartDate;
             EndDate = timeTracker.EndDate;
             TimeZoneId = timeTracker.TimeZoneId;
-            CreatedAt = timeTracker.CreatedAt;
-            UpdatedAt = timeTracker.UpdatedAt;
-            DeletedAt = timeTracker.DeletedAt;
             TaskId = timeTracker.TaskId;
             CollaboratorId = timeTracker.CollaboratorId;
         }
