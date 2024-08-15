@@ -1,9 +1,10 @@
-﻿using TaskFlow.Data;
+﻿using backend.Repository.Interface;
+using TaskFlow.Data;
 using TaskFlow.Model;
 
 namespace backend.Repository
 {
-    public class CollaboratorRepository
+    public class CollaboratorRepository : ICollaboratorRepository
     {
         private readonly DataContext _context;
         public CollaboratorRepository(DataContext context)

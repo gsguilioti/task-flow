@@ -1,9 +1,10 @@
-﻿using TaskFlow.Data;
+﻿using backend.Repository.Interface;
+using TaskFlow.Data;
 using TaskFlow.Model;
 
 namespace backend.Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
         public UserRepository(DataContext context)
@@ -15,12 +16,6 @@ namespace backend.Repository
         public User GetByUsername(string username) => _context.Users.FirstOrDefault(t => t.UserName == username);
 
         public IEnumerable<User> GetAll() => _context.Users;
-
-        public void Update(User user)
-        {
-            _context.Users.Update(user);
-            _context.SaveChanges();
-        }
 
         public void Delete(User user)
         {

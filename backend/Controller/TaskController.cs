@@ -1,4 +1,5 @@
 ﻿using backend.Repository;
+using backend.Repository.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -11,8 +12,8 @@ namespace backend.Controller
     [Route("[controller]")]
     public class TaskController : ControllerBase
     {
-        private readonly TaskRepository _repository;
-        public TaskController(TaskRepository repository)
+        private readonly ITaskRepository _repository;
+        public TaskController(ITaskRepository repository)
         {
             _repository = repository;
         }

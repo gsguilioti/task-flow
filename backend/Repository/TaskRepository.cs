@@ -1,9 +1,10 @@
-﻿using TaskFlow.Data;
+﻿using backend.Repository.Interface;
+using TaskFlow.Data;
 using TaskFlow.Model;
 
 namespace backend.Repository
 {
-    public class TaskRepository
+    public class TaskRepository : ITaskRepository
     {
         private readonly DataContext _context;
         public TaskRepository(DataContext context)

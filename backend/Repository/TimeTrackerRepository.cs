@@ -1,9 +1,10 @@
-﻿using TaskFlow.Data;
+﻿using backend.Repository.Interface;
+using TaskFlow.Data;
 using TaskFlow.Model;
 
 namespace backend.Repository
 {
-    public class TimeTrackerRepository
+    public class TimeTrackerRepository : ITimeTrackerRepository
     {
         private readonly DataContext _context;
         public TimeTrackerRepository(DataContext context)

@@ -1,4 +1,5 @@
 ﻿using backend.Repository;
+using backend.Repository.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -11,8 +12,8 @@ namespace backend.Controller
     [Route("[controller]")]
     public class ProjectController : ControllerBase
     {
-        private readonly ProjectRepository _repository;
-        public ProjectController(ProjectRepository repository)
+        private readonly IProjectRepository _repository;
+        public ProjectController(IProjectRepository repository)
         {
             _repository = repository;
         }

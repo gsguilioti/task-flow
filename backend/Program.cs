@@ -1,5 +1,7 @@
 using backend.Repository;
+using backend.Repository.Interface;
 using backend.Service;
+using backend.Service.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -30,14 +32,14 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = false;
 });
 
-builder.Services.AddScoped<CollaboratorRepository>();
-builder.Services.AddScoped<TaskRepository>();
-builder.Services.AddScoped<TimeTrackerRepository>();
-builder.Services.AddScoped<ProjectRepository>();
-builder.Services.AddScoped<UserRepository>();
+builder.Services.AddTransient<ICollaboratorRepository, CollaboratorRepository>();
+builder.Services.AddTransient<ITaskRepository, TaskRepository>();
+builder.Services.AddTransient<ITimeTrackerRepository, TimeTrackerRepository>();
+builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
-builder.Services.AddScoped<TimeTrackerService>();
-builder.Services.AddScoped<CollaboratorService>();
+builder.Services.AddTransient<ITimeTrackerService, TimeTrackerService>();
+builder.Services.AddTransient<ICollaboratorService, CollaboratorService>();
 
 var app = builder.Build();
 

@@ -1,5 +1,7 @@
 ﻿using backend.Repository;
+using backend.Repository.Interface;
 using backend.Service;
+using backend.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -12,9 +14,9 @@ namespace backend.Controller
     [Route("[controller]")]
     public class TimeTrackerController : ControllerBase
     {
-        private readonly TimeTrackerRepository _repository;
-        private readonly TimeTrackerService _timeTrackerService;
-        public TimeTrackerController(TimeTrackerRepository repository, TimeTrackerService timeTrackerService)
+        private readonly ITimeTrackerRepository _repository;
+        private readonly ITimeTrackerService _timeTrackerService;
+        public TimeTrackerController(ITimeTrackerRepository repository, ITimeTrackerService timeTrackerService)
         {
             _repository = repository;
             _timeTrackerService = timeTrackerService;

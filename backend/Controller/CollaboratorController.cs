@@ -1,5 +1,7 @@
 ﻿using backend.Repository;
+using backend.Repository.Interface;
 using backend.Service;
+using backend.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -12,9 +14,9 @@ namespace backend.Controller
     [Route("[controller]")]
     public class CollaboratorController : ControllerBase
     {
-        private readonly CollaboratorRepository _repository;
-        private readonly CollaboratorService _collaboratorService;
-        public CollaboratorController(CollaboratorRepository repository, CollaboratorService collaboratorService)
+        private readonly ICollaboratorRepository _repository;
+        private readonly ICollaboratorService _collaboratorService;
+        public CollaboratorController(ICollaboratorRepository repository, ICollaboratorService collaboratorService)
         {
             _repository = repository;
             _collaboratorService = collaboratorService;

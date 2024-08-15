@@ -1,4 +1,5 @@
 ﻿using backend.Repository;
+using backend.Repository.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -11,16 +12,16 @@ namespace backend.Controller
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly UserRepository _repository;
-        public UserController(UserRepository repository)
+        private readonly IUserRepository _repository;
+        public UserController(IUserRepository repository)
         {
             _repository = repository;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        [HttpGet("{username}")]
+        public IActionResult GetById(string username)
         {
-            var user = _repository.GetById(id);
+            var user = _repository.GetByUsername(username);
 
             if (user == null)
                 return NotFound(new { Message = "Not Found" });
@@ -37,19 +38,6 @@ namespace backend.Controller
                 return Ok(new { Message = "Nenhum registro encontrado" });
 
             return Ok(users);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult Update(string id, UserDto dto)
-        {
-            var user = _repository.GetById(id);
-
-            if (user == null)
-                return NotFound(new { Message = "Not Found" });
-
-            user.MapDto(dto);
-            _repository.Update(user);
-            return Ok(user);
         }
 
         [HttpDelete("{username}")]

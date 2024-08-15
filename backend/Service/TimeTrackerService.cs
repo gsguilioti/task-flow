@@ -1,13 +1,14 @@
-﻿using backend.Repository;
+﻿using backend.Repository.Interface;
+using backend.Service.Interface;
 using TaskFlow.Dto;
 using TaskFlow.Model;
 
 namespace backend.Service
 {
-    public class TimeTrackerService
+    public class TimeTrackerService : ITimeTrackerService
     {
-        private readonly TimeTrackerRepository _timeTrackerRepository;
-        public TimeTrackerService(TimeTrackerRepository timeTrackerRepository)
+        private readonly ITimeTrackerRepository _timeTrackerRepository;
+        public TimeTrackerService(ITimeTrackerRepository timeTrackerRepository)
         {
             _timeTrackerRepository = timeTrackerRepository;
         }
