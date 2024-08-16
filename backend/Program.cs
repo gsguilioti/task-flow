@@ -79,7 +79,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
-    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
 }));
 
 var app = builder.Build();
@@ -91,6 +91,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("corsapp");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -99,7 +101,5 @@ app.MapIdentityApi<User>().AllowAnonymous();
 app.UseHttpsRedirection();
 
 app.MapControllers().AllowAnonymous(); //tratar depois
-
-app.UseCors("corsapp");
 
 app.Run();

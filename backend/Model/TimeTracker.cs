@@ -8,8 +8,6 @@ namespace TaskFlow.Model
         public DateTime? StartDate { get; set; }    
         public DateTime? EndDate { get; set; }    
 
-        public string TimeZoneId { get; set; }
-
         public DateTime? CreatedAt { get; set; }    
         public DateTime? UpdatedAt { get; set; }    
 

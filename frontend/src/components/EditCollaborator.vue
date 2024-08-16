@@ -4,7 +4,7 @@
         <b-card-body>
           <h2>Edit Collaborador</h2>
           <b-form @submit.prevent="updateCollaborator">
-            <b-form-group label="Collaborator Name:" label-for="collaborator-name">
+            <b-form-group label="Name:" label-for="collaborator-name">
               <b-form-input
                 id="collaborator-name"
                 v-model="collaborator.name"

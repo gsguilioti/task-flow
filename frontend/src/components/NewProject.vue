@@ -4,21 +4,12 @@
         <b-card-body>
           <h2>New Project</h2>
           <b-form @submit.prevent="createProject">
-            <b-form-group label="Project Name:" label-for="project-name">
+            <b-form-group label="Name:" label-for="project-name">
               <b-form-input
                 id="project-name"
                 v-model="project.name"
                 required
               ></b-form-input>
-            </b-form-group>
-            
-            <b-form-group label="Project Description:" label-for="project-description">
-              <b-form-textarea
-                id="project-description"
-                v-model="project.description"
-                rows="3"
-                required
-              ></b-form-textarea>
             </b-form-group>
             
             <b-button type="submit" variant="success">Create</b-button>

@@ -4,7 +4,7 @@
         <b-card-body>
           <h2>New Task</h2>
           <b-form @submit.prevent="createTask">
-            <b-form-group label="Task Name:" label-for="task-name">
+            <b-form-group label="Name:" label-for="task-name">
               <b-form-input
                 id="task-name"
                 v-model="task.name"
@@ -23,6 +23,7 @@
             <b-form-group label="Project:" label-for="task-project">
               <b-form-select
                 id="task-project"
+                v-model="task.projectId"
               >
                 <option v-for="project in projects" :key="project.id" :value="project.id">
                   {{ project.name }}
@@ -30,7 +31,7 @@
               </b-form-select>
             </b-form-group>
             
-            <b-button type="submit" variant="success" @click="createTask">Create</b-button>
+            <b-button type="submit" variant="success">Create</b-button>
             <b-button @click="cancel" variant="secondary" class="ms-2">Cancel</b-button>
           </b-form>
         </b-card-body>
@@ -50,7 +51,8 @@
       const router = useRouter();
       const task = ref({
         name: '',
-        description: ''
+        description: '',
+        projectId: null
       });
 
       const projects = ref([]);

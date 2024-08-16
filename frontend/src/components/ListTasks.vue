@@ -16,7 +16,8 @@
                     <b-card-body>
                         <b-card-text>
                             <h3>{{ task.name }}</h3>
-                            {{ task.description }}
+                            <p> {{ task.projectName }} </p>
+                            <p> {{ task.description }}</p>
                         </b-card-text>
                     </b-card-body>
                 </b-col>
@@ -33,6 +34,7 @@
     
 <script>
 import TaskService from '@/services/TaskService';
+import ProjectService from '@/services/ProjectService';
 
     export default {
       name: 'ListTask',
@@ -43,6 +45,8 @@ import TaskService from '@/services/TaskService';
       },
       created() {
         this.getTasks();
+        for(let task in this.tasks)
+            task.projectName = this.getProjectName(task.projectId)
      },
       methods: 
       {
@@ -52,7 +56,6 @@ import TaskService from '@/services/TaskService';
             {
                 const response = await TaskService.getAll();
                 this.tasks = response.data;
-                console.log(response.data)
             }
             catch(error)
             {
@@ -66,12 +69,18 @@ import TaskService from '@/services/TaskService';
             this.$router.push({ name: 'NewTask'});
         },
         async deleteTask(id) {
-            if(confirm(`Tem certeza que deseja excluir o projeto ${id}?`))
+            if(confirm(`Are you sure you want to delete the project ${id}?`))
             {
                 await TaskService.delete(id);
                 this.getTasks();
             }
             
+        },
+        async getProjectName(id) {
+             await ProjectService.getById(id)
+            .then((response) => {
+                return response.data.name;
+            } );
         }
       }
     };

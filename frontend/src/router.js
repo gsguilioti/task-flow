@@ -8,6 +8,8 @@ import NewProject from './components/NewProject.vue';
 import EditCollaborator from './components/EditCollaborator.vue';
 import NewTask from './components/NewTask.vue';
 import EditTask from './components/EditTask.vue';
+import NewTimeTracker from './components/NewTimeTracker.vue';
+import EditTimeTracker from './components/EditTimeTracker.vue';
 
 const routes = [
   {
@@ -55,6 +57,17 @@ const routes = [
     name: 'EditCollaborator',
     component: EditCollaborator,
     props: true
+  },
+  {
+    path: '/timetracker/edit/:id',
+    name: 'EditTimeTracker',
+    component: EditTimeTracker,
+    props: true
+  },
+  {
+    path: '/timetracker/new',
+    name: 'NewTimeTracker',
+    component: NewTimeTracker,
   },
   {
     path: '/login',

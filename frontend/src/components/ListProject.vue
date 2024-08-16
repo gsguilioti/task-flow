@@ -64,7 +64,7 @@ import ProjectService from '@/services/ProjectService';
             this.$router.push({ name: 'NewProject'});
         },
         async deleteProject(id) {
-            if(confirm(`Tem certeza que deseja excluir o projeto ${id}?`))
+            if(confirm(`Are you sure you want to delete the project ${id}?`))
             {
                 await ProjectService.delete(id);
                 this.getProjects();

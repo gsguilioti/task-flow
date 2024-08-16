@@ -4,7 +4,7 @@
         <b-card-body>
           <h2>Edit Project</h2>
           <b-form @submit.prevent="updateProject">
-            <b-form-group label="Project Name:" label-for="project-name">
+            <b-form-group label="Name:" label-for="project-name">
               <b-form-input
                 id="project-name"
                 v-model="project.name"

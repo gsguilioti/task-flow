@@ -56,7 +56,7 @@ import CollaboratorService from '@/services/CollaboratorService';
             this.$router.push({ name: 'EditCollaborator', params: { id } });
         },
         async deleteCollaborator(id) {
-            if(confirm(`Tem certeza que deseja excluir o projeto ${id}?`))
+            if(confirm(`Are you sure you want to delete the project ${id}?`))
             {
                 await CollaboratorService.delete(id);
                 this.getCollaborators();

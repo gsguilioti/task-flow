@@ -29,7 +29,7 @@ export default {
   methods: {
     login() 
     {
-      
+      this.$router.push({ name: 'Projects'});
     }
   }
 };
@@ -39,7 +39,9 @@ export default {
 <style scoped>
 .login-container {
   max-width: 400px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
