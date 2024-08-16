@@ -22,9 +22,9 @@ class ProjectService
         return axios.put(`http://localhost:5141/project/${id}`, project)
     }
 
-    delete(id)
+    async delete(id)
     {
-        return axios.delete(`http://localhost:5141/project/${id}`)
+        return await axios.delete(`http://localhost:5141/project/${id}`)
     }
 }
 
