@@ -1,30 +1,25 @@
-import axios from "axios";
+import request from "../axios_config.js";
 
 class UserService
 {
     getById(username)
     {
-        return axios.get(`http://localhost:5141/user/${username}`)
+        return request.get(`http://localhost:5141/user/${username}`)
     }
 
     getAll()
     {
-        return axios.get('http://localhost:5141/user')
-    }
-
-    create(user)
-    {
-        return axios.post(`http://localhost:5141/register`, user)
+        return request.get('http://localhost:5141/user')
     }
 
     login(user)
     {
-        return axios.post(`http://localhost:5141/login`, login)
+        return request.post(`http://localhost:5141/user/login`, user)
     }
 
     delete(username)
     {
-        return axios.delete(`http://localhost:5141/user/${username}`)
+        return request.delete(`http://localhost:5141/user/${username}`)
     }
 }
 

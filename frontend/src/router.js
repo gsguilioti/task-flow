@@ -30,7 +30,7 @@ const routes = [
   {
     path: '/projects/new',
     name: 'NewProject',
-    component: NewProject,
+    component: NewProject
   },
   {
     path: '/tasks',
@@ -74,11 +74,35 @@ const routes = [
     name: 'Login',
     component: Login
   },
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/login'
+  }
 ];
+
+const authRoutes = routes.map(route => {
+  if (route.name !== 'Login') {
+    return {
+      ...route,
+      meta: { requiresAuth: true }
+    };
+  }
+  return route;
+});
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes: authRoutes
+});
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('token');
+  
+  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+    next('/login');
+  } else {
+    next();
+  }
 });
 
 export default router;

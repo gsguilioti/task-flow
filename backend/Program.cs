@@ -26,7 +26,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 
 builder.Services.AddIdentityApiEndpoints<User>()
-    .AddEntityFrameworkStores<DataContext>();
+    .AddEntityFrameworkStores<DataContext>()
+    .AddSignInManager();
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.User.AllowedUserNameCharacters = null;
@@ -69,11 +70,27 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
         Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
     });
 });
 
@@ -96,10 +113,8 @@ app.UseCors("corsapp");
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapIdentityApi<User>().AllowAnonymous();
-
 app.UseHttpsRedirection();
 
-app.MapControllers().AllowAnonymous(); //tratar depois
+app.MapControllers();
 
 app.Run();

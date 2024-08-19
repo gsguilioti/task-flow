@@ -1,35 +1,35 @@
-import axios from "axios";
+import request from "../axios_config.js";
 
 class TaskService
 {
     getById(id)
     {
-        return axios.get(`http://localhost:5141/task/${id}`)
+        return request.get(`http://localhost:5141/task/${id}`)
     }
 
     getAll() 
     {
-        return axios.get('http://localhost:5141/task')
+        return request.get('http://localhost:5141/task')
     }
 
     getByProject(projectId)
     {
-        return axios.get(`http://localhost:5141/task/project/${projectId}`)
+        return request.get(`http://localhost:5141/task/project/${projectId}`)
     }
 
     create(task)
     {
-        return axios.post('http://localhost:5141/task', task)
+        return request.post('http://localhost:5141/task', task)
     }
 
     update(id, task)
     {
-        return axios.put(`http://localhost:5141/task/${id}`, task)
+        return request.put(`http://localhost:5141/task/${id}`, task)
     }
 
     delete(id)
     {
-        return axios.delete(`http://localhost:5141/task/${id}`)
+        return request.delete(`http://localhost:5141/task/${id}`)
     }
 }
 

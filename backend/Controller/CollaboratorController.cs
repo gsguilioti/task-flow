@@ -37,7 +37,6 @@ namespace backend.Controller
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult GetAll()
         {
             var collaborators = _repository.GetAll();

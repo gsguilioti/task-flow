@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import UserService from '@/services/UserService';
+
 export default {
   name: 'Login',
   data() {
@@ -27,9 +29,21 @@ export default {
     };
   },
   methods: {
-    login() 
-    {
-      this.$router.push({ name: 'Projects'});
+    async login() {
+      try {
+        const user = {
+          email: this.email,
+          password: this.password
+        };
+        
+        const response = await UserService.login(user);
+        const token = response.data.token;
+
+        localStorage.setItem('token', token);
+        this.$router.push({ name: 'Projects' });
+      } catch (error) {
+        this.errorMessage = 'Invalid email or password';
+      }
     }
   }
 };

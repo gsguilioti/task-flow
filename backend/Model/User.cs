@@ -13,5 +13,9 @@ namespace TaskFlow.Model
         {
             UserName = dto.UserName;
         }
+        public User(LoginUserDto dto)
+        {
+            UserName = dto.Email;
+        }
     }
 }

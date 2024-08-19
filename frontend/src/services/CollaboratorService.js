@@ -1,30 +1,30 @@
-import axios from "axios";
+import request from "../axios_config.js";
 
 class CollaboratorService
 {
     getById(id)
     {
-        return axios.get(`http://localhost:5141/collaborator/${id}`)
+        return request.get(`http://localhost:5141/collaborator/${id}`)
     }
 
     getAll()
     {
-        return axios.get('http://localhost:5141/collaborator')
+        return request.get('http://localhost:5141/collaborator')
     }
 
     create(collaborator)
     {
-        return axios.post('http://localhost:5141/collaborator', collaborator)
+        return request.post('http://localhost:5141/collaborator', collaborator)
     }
 
     update(id, collaborator)
     {
-        return axios.put(`http://localhost:5141/collaborator/${id}`, collaborator)
+        return request.put(`http://localhost:5141/collaborator/${id}`, collaborator)
     }
 
     delete(id)
     {
-        return axios.delete(`http://localhost:5141/collaborator/${id}`)
+        return request.delete(`http://localhost:5141/collaborator/${id}`)
     }
 }
 
